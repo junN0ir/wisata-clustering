@@ -1,12 +1,14 @@
 import pandas as pd
+import numpy as np
 from preprocess import preprocess_series
-from vectorize import vectorize_text
-from cluster import run_kmeans
+from tfidf import vectorize_text  # Implementasi manual TF-IDF
+from kmeans import run_kmeans  # Implementasi manual K-Means
 from summarize import top_words_per_cluster
 from analyzer import analyze_sentiment, detect_tema, get_cluster_label, extract_top_keywords
 
 print("="*60)
 print("CLUSTERING WISATA BALIKPAPAN - TF-IDF & K-MEANS")
+print("Implementasi Custom (Tanpa Sklearn)")
 print("="*60)
 
 # ===============================
@@ -23,6 +25,10 @@ print(f"   Total tempat wisata: {df['wisata'].nunique()}")
 print("\n[2/7] Preprocessing reviews...")
 df["clean_review"] = preprocess_series(df["review"])
 
+# Hapus review yang kosong setelah preprocessing
+df = df[df["clean_review"].str.len() > 0]
+print(f"   Reviews setelah cleaning: {len(df)}")
+
 # ===============================
 # 3. GABUNG REVIEW PER TEMPAT
 # ===============================
@@ -34,20 +40,28 @@ grouped = (
 )
 grouped.rename(columns={"clean_review": "all_reviews"}, inplace=True)
 
-# ===============================
-# 4. TF-IDF (PER TEMPAT)
-# ===============================
-print("\n[4/7] Melakukan TF-IDF vectorization...")
-vectorizer, X = vectorize_text(grouped["all_reviews"])
-print(f"   Shape matrix: {X.shape}")
+# Filter tempat yang reviewnya terlalu pendek
+grouped = grouped[grouped["all_reviews"].str.len() > 10]
+print(f"   Tempat wisata yang diproses: {len(grouped)}")
 
 # ===============================
-# 5. K-MEANS CLUSTERING
+# 4. TF-IDF (IMPLEMENTASI MANUAL)
+# ===============================
+print("\n[4/7] Melakukan TF-IDF vectorization (Custom Implementation)...")
+vectorizer, X = vectorize_text(grouped["all_reviews"])
+print(f"   Shape matrix: {X.shape}")
+print(f"   Total features: {len(vectorizer.feature_names_)}")
+
+# ===============================
+# 5. K-MEANS CLUSTERING (IMPLEMENTASI MANUAL)
 # ===============================
 K = 3  # jumlah cluster
-print(f"\n[5/7] Running K-Means (k={K})...")
+print(f"\n[5/7] Running K-Means (k={K}) (Custom Implementation)...")
 model, labels = run_kmeans(X, k=K)
 grouped["cluster"] = labels
+
+print(f"   Converged in {model.n_iter_} iterations")
+print(f"   Inertia: {model.inertia_:.4f}")
 
 # ===============================
 # 6. ANALISIS TAMBAHAN
@@ -93,7 +107,12 @@ output_df.to_csv("../outputs/hasil_cluster_per_tempat.csv", index=False)
 
 # Simpan juga detail cluster
 cluster_detail = pd.DataFrame([
-    {"cluster": c, "label": cluster_labels[c], "kata_dominan": ", ".join(words[:10])}
+    {
+        "cluster": c, 
+        "label": cluster_labels[c], 
+        "kata_dominan": ", ".join(words[:10]),
+        "jumlah_tempat": len(grouped[grouped["cluster"] == c])
+    }
     for c, words in cluster_summary.items()
 ])
 cluster_detail.to_csv("../outputs/detail_cluster.csv", index=False)
@@ -131,7 +150,20 @@ print("="*60)
 print(f"\nStatistik:")
 print(f"- Total tempat wisata   : {len(grouped)}")
 print(f"- Jumlah cluster        : {K}")
+print(f"- Total features (vocab): {len(vectorizer.feature_names_)}")
+print(f"- Iterasi konvergensi   : {model.n_iter_}")
+print(f"- Inertia (SSE)         : {model.inertia_:.4f}")
+print(f"\nDistribusi Kategori:")
 print(f"- Kategori 'Sangat Baik': {len(grouped[grouped['kategori'] == 'Sangat Baik'])}")
 print(f"- Kategori 'Baik'       : {len(grouped[grouped['kategori'] == 'Baik'])}")
 print(f"- Kategori 'Kurang Baik': {len(grouped[grouped['kategori'] == 'Kurang Baik'])}")
 print(f"- Kategori 'Netral'     : {len(grouped[grouped['kategori'] == 'Netral'])}")
+
+print("\n" + "="*60)
+print("INFO IMPLEMENTASI:")
+print("- TF-IDF: Custom Implementation (Manual)")
+print("- K-Means: Custom Implementation (Manual)")
+print("- Preprocessing: Custom Rules")
+print("- Sentiment Analysis: Rule-based")
+print("- Theme Detection: Keyword Matching")
+print("="*60)
