@@ -50,6 +50,142 @@ TEMA_KEYWORDS = {
 }
 
 # ===============================
+# KATA FUNGSIONAL (DIABAIKAN)
+# ===============================
+FUNCTIONAL_WORDS = {
+    # Kata hubung
+    'tentang', 'untuk', 'dengan', 'dari', 'kepada', 'oleh', 'terhadap',
+    'atas', 'bagi', 'hingga', 'sampai', 'sejak', 'selama', 'antara',
+    
+    # Kata keterangan
+    'agak', 'sangat', 'cukup', 'terlalu', 'paling', 'lebih', 'kurang',
+    'sekali', 'banget', 'amat', 'benar', 'sungguh', 'bahkan', 'hanya',
+    'saja', 'juga', 'pun', 'lah', 'kah',
+    
+    # Kata depan
+    'berbagai', 'beberapa', 'banyak', 'semua', 'setiap', 'seluruh',
+    'masing', 'tiap', 'para',
+    
+    # Kata tambahan
+    'jadi', 'menjadi', 'akan', 'telah', 'sudah', 'belum', 'masih',
+    'sedang', 'tengah', 'lagi', 'kembali', 'terus', 'tetap',
+    
+    # Kata ganti
+    'saya', 'kamu', 'anda', 'kita', 'kami', 'mereka', 'dia',
+    'nya', 'ini', 'itu', 'sini', 'situ', 'sana',
+    
+    # Kata kerja umum yang tidak informatif
+    'ada', 'adalah', 'ialah', 'yaitu', 'yakni', 'bahwa', 'kalau',
+    'jika', 'bila', 'maka', 'lalu', 'kemudian', 'namun', 'tetapi',
+    
+    # Kata bahasa Inggris umum
+    'the', 'and', 'for', 'with', 'from', 'this', 'that', 'very',
+    'too', 'also', 'than', 'some', 'many', 'much', 'more', 'most'
+}
+
+# ===============================
+# KATA SIFAT & KATA BENDA (PRIORITAS)
+# ===============================
+# Kata sifat (adjective) - deskripsi kualitas
+ADJECTIVES = {
+    # Ukuran
+    'besar', 'kecil', 'luas', 'sempit', 'tinggi', 'rendah', 'panjang', 'pendek',
+    'banyak', 'sedikit', 'tebal', 'tipis',
+    
+    # Warna
+    'putih', 'hitam', 'merah', 'biru', 'hijau', 'kuning', 'coklat', 'abu',
+    
+    # Kondisi
+    'bersih', 'kotor', 'jernih', 'keruh', 'terang', 'gelap', 'basah', 'kering',
+    'baru', 'lama', 'rusak', 'utuh', 'rapih', 'berantakan',
+    
+    # Suhu & Sensasi
+    'panas', 'dingin', 'sejuk', 'hangat', 'segar', 'pengap',
+    
+    # Kualitas
+    'bagus', 'jelek', 'indah', 'cantik', 'buruk', 'baik', 'elok', 'menawan',
+    'megah', 'sederhana', 'mewah', 'biasa', 'istimewa', 'unik', 'langka',
+    
+    # Suasana
+    'tenang', 'ramai', 'sepi', 'sunyi', 'ribut', 'gaduh', 'hening',
+    'nyaman', 'asri', 'natural', 'alami',
+    
+    # Emosi/Pengalaman
+    'menyenangkan', 'membosankan', 'menakjubkan', 'mengecewakan',
+    'menarik', 'menegangkan', 'melelahkan', 'menyegarkan',
+    
+    # Bentuk
+    'bulat', 'kotak', 'persegi', 'bundar', 'lonjong', 'cembung', 'cekung',
+    
+    # Tekstur
+    'halus', 'kasar', 'lembut', 'keras', 'lunak', 'licin', 'berbatu',
+    
+    # Jarak & Posisi
+    'dekat', 'jauh', 'atas', 'bawah', 'dalam', 'dangkal', 'tersembunyi',
+    
+    # Kecepatan
+    'cepat', 'lambat', 'pelan', 'tenang', 'deras',
+    
+    # Usia
+    'muda', 'tua', 'modern', 'kuno', 'klasik', 'kontemporer',
+    
+    # Bahasa Inggris
+    'beautiful', 'amazing', 'wonderful', 'spectacular', 'gorgeous',
+    'stunning', 'magnificent', 'awesome', 'cool', 'nice', 'great',
+    'clean', 'dirty', 'clear', 'fresh', 'natural', 'calm', 'quiet',
+    'crowded', 'empty', 'hot', 'cold', 'warm', 'cool'
+}
+
+# Kata benda (noun) - objek konkret
+NOUNS = {
+    # Alam
+    'pantai', 'laut', 'pasir', 'ombak', 'air', 'sungai', 'danau', 'kolam',
+    'gunung', 'bukit', 'tebing', 'batu', 'karang', 'gua',
+    'hutan', 'pohon', 'tanaman', 'bunga', 'rumput', 'daun', 'ranting',
+    'sunset', 'sunrise', 'matahari', 'bulan', 'bintang', 'awan', 'langit',
+    
+    # Fauna
+    'ikan', 'burung', 'monyet', 'orangutan', 'beruang', 'harimau', 'gajah',
+    'kerbau', 'sapi', 'kambing', 'ayam', 'bebek', 'kucing', 'anjing',
+    'lumba', 'pesut', 'penyu', 'kepiting', 'udang',
+    
+    # Bangunan & Infrastruktur
+    'jembatan', 'jalan', 'gang', 'lorong', 'tangga', 'pagar', 'pintu', 'gerbang',
+    'masjid', 'gereja', 'vihara', 'museum', 'taman', 'kebun',
+    'warung', 'resto', 'restaurant', 'cafe', 'mall', 'plaza', 'pasar', 'toko',
+    'hotel', 'penginapan', 'villa', 'cottage',
+    'toilet', 'kamar', 'mandi', 'mushola', 'parkir',
+    
+    # Fasilitas
+    'gazebo', 'ayunan', 'bangku', 'meja', 'kursi', 'panggung', 'arena',
+    'kanopi', 'shelter', 'spot', 'area', 'zona', 'lokasi', 'tempat',
+    
+    # Transportasi
+    'mobil', 'motor', 'sepeda', 'perahu', 'kapal', 'sampan', 'speed boat',
+    
+    # Makanan & Minuman
+    'makanan', 'minuman', 'seafood', 'ikan bakar', 'kopi', 'teh', 'jus',
+    'nasi', 'mie', 'sate', 'bakso', 'soto', 'menu', 'hidangan',
+    
+    # Aktivitas & Objek Wisata
+    'pemandangan', 'view', 'landscape', 'panorama', 'vista',
+    'foto', 'picture', 'selfie', 'dokumentasi',
+    'tracking', 'trekking', 'hiking', 'jogging', 'camping',
+    'diving', 'snorkeling', 'swimming', 'berenang',
+    
+    # Lainnya
+    'tiket', 'harga', 'biaya', 'uang', 'rupiah',
+    'orang', 'pengunjung', 'wisatawan', 'turis', 'guide', 'staff',
+    'keluarga', 'anak', 'teman', 'pasangan',
+    
+    # Bahasa Inggris
+    'beach', 'sea', 'ocean', 'forest', 'tree', 'flower', 'garden',
+    'bridge', 'gate', 'entrance', 'waterfall', 'river', 'lake',
+    'monkey', 'bird', 'fish', 'dolphin', 'turtle',
+    'sunset', 'sunrise', 'view', 'landscape', 'food', 'restaurant'
+}
+
+# ===============================
 # FUNGSI ANALISIS SENTIMEN
 # ===============================
 def analyze_sentiment(text):
@@ -140,22 +276,36 @@ def get_cluster_label(keywords):
     return f"{sentiment} - {tema}"
 
 # ===============================
-# FUNGSI EKSTRAK KATA KUNCI
+# FUNGSI EKSTRAK KATA KUNCI (IMPROVED)
 # ===============================
 def extract_top_keywords(text, top_n=5):
     """
     Ekstrak kata kunci paling sering muncul
+    HANYA kata sifat (adjective) dan kata benda (noun)
+    TIDAK termasuk kata fungsional
     
     Returns:
     - list kata kunci teratas
     """
     words = text.lower().split()
     
-    # Filter kata dengan panjang minimal 3 karakter
-    words = [w for w in words if len(w) > 3]
+    # Filter: hanya ambil kata sifat dan kata benda, buang kata fungsional
+    filtered_words = []
+    for word in words:
+        # Skip jika kata terlalu pendek
+        if len(word) <= 3:
+            continue
+        
+        # Skip jika kata fungsional
+        if word in FUNCTIONAL_WORDS:
+            continue
+        
+        # Ambil hanya kata sifat atau kata benda
+        if word in ADJECTIVES or word in NOUNS:
+            filtered_words.append(word)
     
     # Hitung frekuensi kata
-    word_freq = Counter(words)
+    word_freq = Counter(filtered_words)
     
     # Ambil top N kata
     top_words = [word for word, count in word_freq.most_common(top_n)]
