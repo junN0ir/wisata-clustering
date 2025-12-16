@@ -1,0 +1,12 @@
+pandas>=1.3.0
+numpy>=1.21.0
+matplotlib>=3.4.0
+seaborn>=0.11.0
+
+# Note: scikit-learn TIDAK DIPERLUKAN
+# Semua komponen AI sudah diimplementasikan secara manual:
+# - TF-IDF (tfidf.py)
+# - K-Means (kmeans.py)
+# - Preprocessing NLP (preprocess.py)
+# - Sentiment Analysis (analyzer.py)
+# - Theme Detection (analyzer.py)
